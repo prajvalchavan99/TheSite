@@ -1,0 +1,45 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/bulma.css' %}">
+<link rel="stylesheet" href="{% static '/css/main.css' %}">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img src="{% static '/images/test.png' %}" width="75" height="auto">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        About
+      </a>
+
+      <a class="navbar-item">
+        <button class="button-36" style="margin-top: 0%;height: 2em;">Pricing</button>
+      </a>
+
+      <a class="navbar-item">
+        Products
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
