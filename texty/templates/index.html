@@ -3,40 +3,90 @@
 <div class="level is-mobile">
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Tweets</p>
+        <p class="heading">Characters</p>
         <p class="title">3,456</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Following</p>
+        <p class="heading">Words</p>
         <p class="title">123</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Followers</p>
+        <p class="heading">Senctences</p>
         <p class="title">456K</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Likes</p>
+        <p class="heading">Paraghraphs</p>
         <p class="title">789</p>
       </div>
     </div>
 </div>
-<div class="card-left">
-    <button class="button-36" role="button">Button 36 <span class="upgradespan">Pro</span></button><br>
-    <button class="button-36" role="button">Button 36</button><br>
-    <button class="button-36" role="button">Button 36</button><br>
-    <button class="button-36" role="button">Button 36</button><br>
+<div class="maincontainer">
+  <div class="card-left">
+    <div class="button-wrapper">
+      <button class="side-button" type="button">Reverse text</button>
+      <div class="button-bg"></div>
+    </div>
+    <div class="button-wrapper">
+      <button class="side-button" type="button">Extract numbers</button>
+      <div class="button-bg"></div>
+    </div>
+    <div class="button-wrapper">
+      <button class="side-button" type="button">Speak text</button>
+      <div class="button-bg"></div>
+    </div>
+    <div class="button-wrapper">
+      <button class="side-button" type="button">
+        Grammar/Spelling check
+      </button>
+      <div class="button-bg"></div>
+    </div>
+  </div>
+  <textarea class="textareaprimary" rows="33" name="message" placeholder="Enter your text..."></textarea>
+  <div class="card-right">
+    <a href="{% url 'textcompare' %}"><div class="button-wrapper">
+      <button class="side-button" type="button">Text Compare
+    </button>
+      <div class="button-bg"></div>
+    </div></a>
+    <div class="button-wrapper">
+      <button class="side-button" type="button">Random text</button>
+      <div class="button-bg"></div>
+    </div>
+    <div class="button-wrapper">
+      <button class="side-button" type="button">Cool text generator</button>
+      <div class="button-bg"></div>
+    </div>
+    <div class="button-wrapper">
+      <button class="side-button" type="button">Text Encode/Decode</button>
+      <div class="button-bg"></div>
+    </div>
+  </div>
 </div>
-<div class="card-right">
-    <button class="button-36" role="button">Button 36</button><br>
-    <button class="button-36" role="button">Button 36</button><br>
-    <button class="button-36" role="button">Button 36</button><br>
-    <button class="button-36" role="button">Button 36</button><br>
+<br><br>
+<div class="formatbuttons">
+  <div><button>Reset</button></div>
+  <div><button style="background-color:#00d1b2;color:white">Format</button></div>
 </div>
-
-<textarea class="textareaprimary" rows="50" name="message" placeholder="Message"></textarea>
+<br>
+<div class="extraoptions">
+  <div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Trim white spaces</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Remove repeating words</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Sentence case</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Remove punctuation marks</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Randomize text case</label></div>
+  </div>
+  <div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Remove line breaks</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Hello</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Hello</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Hello</label></div>
+    <div class="extraoptionelements"><label for="Hello"><input type="checkbox" name="" id="">&nbsp;&nbsp;Hello</label></div>
+  </div>
+</div>
