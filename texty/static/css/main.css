@@ -169,13 +169,12 @@ nav {
 .extraoptions{
     display: flex;
     margin: 0 auto;
-    width: 45%;
+    width: 90%;
     justify-content: center;
 }
 
 .extraoptions>div{
     width: 100%;
-    padding-left: 50px;
 }
 
 .extraoptionelements{
@@ -203,6 +202,93 @@ nav {
 }
 
 .formatbuttons button{
+    padding: 20px;
+    border: none;
+    font-size: 18px;
+    width: 90%;
+}
+
+.custom-checkbox-input {
+    display: none;
+}
+
+.custom-checkbox{
+    width: 100%;
+}
+
+.custom-checkbox span{
+    width: 20rem;
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+    margin: 0 auto;
+    color: black;
+}
+
+.custom-checkbox-text {
+    padding: 1rem;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(112,112,112,1);
+    box-shadow: 2px 2px 5px 0px rgba(112,112,112,1);
+}
+
+.custom-checkbox-input:checked ~ .custom-checkbox-text {
+    border: 2px solid #00d1b2;
+    color: #00d1b2;
+    -webkit-box-shadow: 2px 2px 5px 0px #00d1b2;
+    -moz-box-shadow: 2px 2px 5px 0px #00d1b2;
+    box-shadow: 2px 2px 5px 0px #00d1b2;
+}
+
+.textcomparediv{
+    border: 1px solid;
+    width: 100%;
+    margin: 10px;
+    min-height: 500px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.textcomparediv[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555; 
+}
+
+.sidetable{
+    width: 100%;
+    border-spacing: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-style: hidden;
+}
+.sidetable th{
+    background-color: rgb(205, 205, 205);
+    padding: 20px;
+}
+.sidetable td{
+    padding: 20px;
+    background-color: rgb(245, 245, 245);
+}
+.sidetable td:nth-child(2){
+    text-align: right;
+}
+
+.formatbuttonscompare{
+    display: flex;
+    width: 1273px;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+.formatbuttonscompare>div{
+    width: 25%;
+    text-align: center;
+}
+
+.formatbuttonscompare button{
     padding: 20px;
     border: none;
     font-size: 18px;
