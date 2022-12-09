@@ -208,9 +208,6 @@ nav {
     width: 90%;
 }
 
-.custom-checkbox-input {
-    display: none;
-}
 
 .custom-checkbox{
     width: 100%;
@@ -219,7 +216,6 @@ nav {
 .custom-checkbox span{
     width: 20rem;
     display: block;
-    text-align: center;
     border-radius: 6px;
     margin: 0 auto;
     color: black;
@@ -266,12 +262,12 @@ nav {
     border-style: hidden;
 }
 .sidetable th{
-    background-color: rgb(205, 205, 205);
+    background-color: #00d1b2be;
     padding: 20px;
 }
 .sidetable td{
     padding: 20px;
-    background-color: rgb(245, 245, 245);
+    background-color: #e6f5f3;
 }
 .sidetable td:nth-child(2){
     text-align: right;
