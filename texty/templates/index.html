@@ -1,183 +1,299 @@
 {% include 'base.html' %}
 <br><br>
-<div class="level is-mobile">
+<div id="app">
+  <div class="mainPopup" :style="popupDisplay ? { 'display': 'block' } : { 'display': 'none' }">
+    <i class="fa-solid fa-xmark" @click="popupDisplay = false"></i>
+  </div>
+  <div class="level is-mobile">
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Characters</p>
-        <p class="title">3,456</p>
+        <p class="title">[[ count ]]</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Words</p>
-        <p class="title">123</p>
+        <p class="title">[[ wordcount]]</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Senctences</p>
-        <p class="title">456K</p>
+        <p class="title">[[ sentencecount ]]</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Paraghraphs</p>
-        <p class="title">789</p>
+        <p class="title">[[ paragraphcount]]</p>
       </div>
     </div>
-</div>
-<div class="maincontainer">
-  <div class="card-left">
-    <div class="button-wrapper">
-      <button class="side-button" type="button">Reverse text</button>
-      <div class="button-bg"></div>
+  </div>
+  <div class="maincontainer">
+    <div class="card-left">
+      <div class="button-wrapper">
+        <button class="side-button" type="button" @click="reversetext">Reverse text</button>
+        <div class="button-bg"></div>
+      </div>
+      <div class="button-wrapper">
+        <button class="side-button" type="button">Extract numbers</button>
+        <div class="button-bg"></div>
+      </div>
+      <div class="button-wrapper">
+        <button class="side-button" type="button">Speak text</button>
+        <div class="button-bg"></div>
+      </div>
+      <div class="button-wrapper">
+        <button class="side-button" type="button">
+          Grammar/Spelling check
+        </button>
+        <div class="button-bg"></div>
+      </div>
     </div>
-    <div class="button-wrapper">
-      <button class="side-button" type="button">Extract numbers</button>
-      <div class="button-bg"></div>
-    </div>
-    <div class="button-wrapper">
-      <button class="side-button" type="button">Speak text</button>
-      <div class="button-bg"></div>
-    </div>
-    <div class="button-wrapper">
-      <button class="side-button" type="button">
-        Grammar/Spelling check
-      </button>
-      <div class="button-bg"></div>
+    <textarea class="textareaprimary" rows="33" name="message" placeholder="Enter your text..."
+      v-model="text">[[ text ]]</textarea>
+    <div class="card-right">
+      <a href="{% url 'textcompare' %}">
+        <div class="button-wrapper">
+          <button class="side-button" type="button">Text Compare
+          </button>
+          <div class="button-bg"></div>
+        </div>
+      </a>
+      <div class="button-wrapper">
+        <button class="side-button" type="button">Random text</button>
+        <div class="button-bg"></div>
+      </div>
+      <div class="button-wrapper">
+        <button class="side-button" type="button">Cool text generator</button>
+        <div class="button-bg"></div>
+      </div>
+      <div class="button-wrapper">
+        <button class="side-button" type="button">Text Encode/Decode</button>
+        <div class="button-bg"></div>
+      </div>
     </div>
   </div>
-  <textarea class="textareaprimary" rows="33" name="message" placeholder="Enter your text..."></textarea>
-  <div class="card-right">
-    <a href="{% url 'textcompare' %}"><div class="button-wrapper">
-      <button class="side-button" type="button">Text Compare
-    </button>
-      <div class="button-bg"></div>
-    </div></a>
-    <div class="button-wrapper">
-      <button class="side-button" type="button">Random text</button>
-      <div class="button-bg"></div>
-    </div>
-    <div class="button-wrapper">
-      <button class="side-button" type="button">Cool text generator</button>
-      <div class="button-bg"></div>
-    </div>
-    <div class="button-wrapper">
-      <button class="side-button" type="button">Text Encode/Decode</button>
-      <div class="button-bg"></div>
-    </div>
+  <br><br>
+  <div class="formatbuttons">
+    <div><button @click="ResetFormat">Reset</button></div>
+    <div><button style="background-color:#00d1b2;color:white" @click="FormatText">[[popupDisplay]]</button></div>
   </div>
-</div>
-<br><br>
-<div class="formatbuttons">
-  <div><button>Reset</button></div>
-  <div><button style="background-color:#00d1b2;color:white">Format</button></div>
-</div>
-<br>
-<div class="extraoptions">
-  <div>
-    <table class="sidetable">
-      <tr>
-        <th colspan="2">Word occurences</th>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-    </table>
-  </div>
-  <div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Trim white spaces</span>
-      </label>
+  <br>
+  <div class="extraoptions">
+    <div id="WordOccurences" style="overflow: auto;">
+      <table class="sidetable">
+        <tr>
+          <th colspan="2">Word occurences</th>
+        </tr>
+        <tr v-for="index,i in numberoOfOcc">
+          <td style="word-break: break-all;">[[ i ]]</td>
+          <td>[[ index ]]</td>
+        </tr>
+      </table>
     </div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Remove repeating words</span>
-      </label>
+    <div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="TrimWhiteSpaces"> &nbsp;Trim white spaces</span>
+        </label>
+      </div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="RemoveReapetingWords"> &nbsp;Remove repeating words</span>
+        </label>
+      </div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="SentenceCase"> &nbsp;Sentence case</span>
+        </label>
+      </div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="RemovePunctuationMarks"> &nbsp;Remove punctuation marks</span>
+        </label>
+      </div>
     </div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Sentence case</span>
-      </label>
+    <div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="RemoveLineBreakes"> &nbsp;Remove line breaks</span>
+        </label>
+      </div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="RemoveSymbols"> &nbsp;Remove symbols</span>
+        </label>
+      </div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="RemoveHTMLTags"> &nbsp;Remove HTMl tags
+      </div>
+      <div class="extraoptionelements">
+        <label class="custom-checkbox">
+
+          <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True"
+              type="checkbox" v-model="RandomiseTextCase"> &nbsp;Randomize text case</span>
+        </label>
+      </div>
     </div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Remove punctuation marks</span>
-      </label>
+    <div id="ClipBoardHistory" style="overflow: auto;">
+      <table class="sidetable">
+        <tr>
+          <th colspan="2">Word occurences</th>
+        </tr>
+        <tr v-for="index in TextChangeList">
+          <td><p> [[ index ]] </p></td>
+          <td><a href="">Restore</a></td>
+        </tr>
+      </table>
     </div>
-  </div>
-  <div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Remove line breaks</span>
-      </label>
-    </div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Remove symbols</span>
-      </label>
-    </div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Remove HTMl tags
-    </div>
-    <div class="extraoptionelements">
-      <label class="custom-checkbox">
-        
-        <span class="custom-checkbox-text"><input class="custom-checkbox-input" name="alarm" value="True" type="checkbox"> &nbsp;Randomize text case</span>
-      </label>
-    </div>
-  </div>
-  <div>
-    <table class="sidetable">
-      <tr>
-        <th colspan="2">Your clipboard history</th>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-      <tr>
-        <td>Occur</td>
-        <td>times</td>
-      </tr>
-    </table>
   </div>
 </div>
+<script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+<script src="https://unpkg.com/v-tag-input@0.0.3/dist/v-tag-input.js"></script>
+<script type="module">
+  var myObject = new Vue({
+    delimiters: ["[[", "]]"],
+    el: '#app',
+    name: "About",
+    data: function () {
+      return {
+        auto: 'saurabh bhaayyyyy',
+        display: 'block',
+        text: '',
+        TrimWhiteSpaces: false,
+        RemoveLineBreakes: false,
+        RemoveReapetingWords: false,
+        RemoveSymbols: false,
+        SentenceCase: false,
+        RemoveHTMLTags: false,
+        RemovePunctuationMarks: false,
+        RandomiseTextCase: false,
+        TextChangeList: [],
+        popupDisplay:'{{ openpopup }}',
+      };
+    },
+    computed: {
+      // logout user
+      count() {
+        return this.text.length;
+      },
+
+      wordcount() {
+        if (this.text == '')
+          return 0
+        return this.text.split(' ').length
+      },
+
+      sentencecount() {
+        if (this.text == '')
+          return 0
+        return this.text.split('.').length
+      },
+
+      paragraphcount() {
+        if (this.text == '') {
+          return 0;
+        }
+        return this.text.split('\n\n').length
+      },
+      numberoOfOcc() {
+        var obj = {};
+        this.text.split(" ").forEach(function (el, i, arr) {
+          obj[el] = obj[el] ? ++obj[el] : 1;
+        });
+        return Object.fromEntries(
+          Object.entries(obj).sort(([, a], [, b]) => a - b).reverse()
+        );
+      },
+    },
+    methods: {
+      reversetext() {
+        this.text = this.text.split("").reverse().join("");
+      },
+      FormatText() {
+        var initialText=this.text;
+        if (this.RemoveHTMLTags) {
+          this.text = this.text.replace(/<\/?[^>]+(>|$)/g, "");
+        }
+        if (this.TrimWhiteSpaces) {
+          var newText = this.text.replaceAll(' ', '');
+          this.text = newText;
+        }
+        if (this.RemoveLineBreakes) {
+          this.text = this.text.replaceAll('\n', '')
+        }
+        if (this.RemoveReapetingWords) {
+          const categories = this.text.split(' ');
+          const unique = Array.from(new Set(categories));
+          this.text = unique.join(" ")
+        }
+        if (this.RemoveSymbols) {
+          this.text = this.text.replace(/[^a-zA-Z \n]/g, "");
+        }
+        if (this.SentenceCase) {
+          var rg = /(^\w{1}|\.\s*\w{1})/gi;
+          var myString = this.text.toLowerCase();
+          myString = myString.replace(rg, function (toReplace) {
+            return toReplace.toUpperCase();
+          });
+          this.text = myString;
+        }
+        if (this.RemovePunctuationMarks) {
+          var s = this.text;
+          var punctuationless = s.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+          this.text = punctuationless;
+        }
+        if (this.RandomiseTextCase) {
+          var str = this.text.split('').map((v) =>
+            Math.round(Math.random()) ? v.toUpperCase() : v.toLowerCase()
+          ).join('');
+          this.text = str;
+        }
+        var finaltext=this.text;
+        if(initialText != finaltext)
+          this.TextChangeList.push(initialText)
+      },
+
+      ResetFormat() {
+        this.TrimWhiteSpaces = false;
+        this.RemoveLineBreakes = false;
+        this.RemoveReapetingWords = false;
+        this.RemoveSymbols = false;
+        this.SentenceCase = false;
+        this.RemoveHTMLTags = false;
+        this.RemovePunctuationMarks = false;
+        this.RandomiseTextCase = false;
+      }
+    },
+    ready: function () {
+      window.beforeunload = this.beforerefresh;
+
+    },
+    // mounted function, can be also used as onload function
+    mounted: function () {
+      var errcount = 0;
+      var statusList = []
+      var isCamOff = localStorage.getItem("cameradisablemessage")
+      if (isCamOff == 1) {
+        document.getElementById("camonofftext").parentNode.style.backgroundColor = "#00589d";
+      }
+    }
+  });
+</script>

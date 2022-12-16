@@ -4,7 +4,8 @@
     width: 100%;
     flex: 0 0 20%;
 }
-.card-right{
+
+.card-right {
     text-align: center;
     margin: 0px 10px 0px 30px;
     width: 100%;
@@ -12,12 +13,12 @@
 }
 
 @media (min-width: 768px) {
-  .button-36 {
-    padding: 0 2.6rem;
-  }
+    .button-36 {
+        padding: 0 2.6rem;
+    }
 }
 
-.textareaprimary{
+.textareaprimary {
     display: block;
     margin: 0px 10px;
     width: 100%;
@@ -27,26 +28,33 @@
     border-radius: 10px;
     flex: 0 0 60%;
 }
-.bordershadow:focus-visible,:visited,:focus {
+
+.bordershadow:focus-visible,
+:visited,
+:focus {
     outline: rgb(35 173 255);
-    box-shadow: 0 0 6px rgb(35 173 255) ;
+    box-shadow: 0 0 6px rgb(35 173 255);
 }
 
-a.navbar-item, .navbar-link{
+a.navbar-item,
+.navbar-link {
     font-size: 22px;
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
     .navbar {
         min-height: 4.25rem;
     }
 }
+
 .navbar-item img {
     max-height: none;
 }
+
 nav {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
+
 .navbar-start {
     margin-left: auto;
     justify-content: space-evenly;
@@ -62,7 +70,7 @@ nav {
     color: black;
     margin: 0px 5px;
 } */
-.maincontainer{
+.maincontainer {
     display: flex;
     width: 1273px;
     margin: 0 auto;
@@ -77,8 +85,8 @@ nav {
     margin: 50px auto;
     height: 100px;
 }
-  
-  
+
+
 .side-button {
     display: block;
     font-size: 16px;
@@ -94,7 +102,7 @@ nav {
     cursor: pointer;
     height: 100px;
     width: 100%;
-  }
+}
 
 .button-bg {
     position: absolute;
@@ -104,11 +112,11 @@ nav {
     height: calc(100% + 4px);
     background: linear-gradient(90deg, #FF8038 0%, #FF0099 30.43%, #00EBEB 68.23%, #DB00FF 100%);
     background-size: 600% 600%;
-    border-radius: 15px;  
+    border-radius: 15px;
     z-index: -1;
     transform: translate(-2px, -2px);
     transition: filter 1s ease-in;
-  }
+}
 
 .button-wrapper:hover .button-bg {
     filter: blur(10px);
@@ -119,19 +127,45 @@ nav {
 }
 
 @-webkit-keyframes AnimateBorder {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @-moz-keyframes AnimateBorder {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @keyframes AnimateBorder {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 .button-36 {
@@ -142,7 +176,7 @@ nav {
     color: #FFFFFF;
     cursor: pointer;
     flex-shrink: 0;
-    font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 24px;
     font-weight: 500;
     height: 8rem;
@@ -155,53 +189,56 @@ nav {
     touch-action: manipulation;
     min-width: 70%;
     margin-top: 30px;
-  }
-  
-  .button-36:hover {
+}
+
+.button-36:hover {
     box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
     transition-duration: .1s;
-  }
+}
 
-.title{
+.title {
     font-size: 25px;
 }
 
-.extraoptions{
+.extraoptions {
     display: flex;
     margin: 0 auto;
     width: 90%;
     justify-content: center;
+    height: 450px;
+    overflow: auto;
 }
 
-.extraoptions>div{
+.extraoptions>div {
     width: 100%;
 }
 
-.extraoptionelements{
+.extraoptionelements {
     padding: 20px;
     width: 100%;
 }
 
-.extraoptionelements label{
+.extraoptionelements label {
     font-size: 1.1rem;
 }
 
-.extraoptionelements input[type=checkbox]{
+.extraoptionelements input[type=checkbox] {
     height: 18px;
     width: 18px;
 }
 
-.formatbuttons{
+.formatbuttons {
     display: flex;
     width: 30%;
     margin: 0 auto;
 }
-.formatbuttons>div{
+
+.formatbuttons>div {
     width: 100%;
     text-align: center;
 }
 
-.formatbuttons button{
+.formatbuttons button {
     padding: 20px;
     border: none;
     font-size: 18px;
@@ -209,11 +246,11 @@ nav {
 }
 
 
-.custom-checkbox{
+.custom-checkbox {
     width: 100%;
 }
 
-.custom-checkbox span{
+.custom-checkbox span {
     width: 20rem;
     display: block;
     border-radius: 6px;
@@ -227,12 +264,12 @@ nav {
     cursor: pointer;
     user-select: none;
     border: 1px solid;
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(112,112,112,1);
-    -moz-box-shadow: 2px 2px 5px 0px rgba(112,112,112,1);
-    box-shadow: 2px 2px 5px 0px rgba(112,112,112,1);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(112, 112, 112, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(112, 112, 112, 1);
+    box-shadow: 2px 2px 5px 0px rgba(112, 112, 112, 1);
 }
 
-.custom-checkbox-input:checked ~ .custom-checkbox-text {
+.custom-checkbox-input:checked~.custom-checkbox-text {
     border: 2px solid #00d1b2;
     color: #00d1b2;
     -webkit-box-shadow: 2px 2px 5px 0px #00d1b2;
@@ -240,7 +277,7 @@ nav {
     box-shadow: 2px 2px 5px 0px #00d1b2;
 }
 
-.textcomparediv{
+.textcomparediv {
     border: 1px solid;
     width: 100%;
     margin: 10px;
@@ -251,42 +288,80 @@ nav {
 
 .textcomparediv[placeholder]:empty:before {
     content: attr(placeholder);
-    color: #555; 
+    color: #555;
 }
 
-.sidetable{
+.sidetable {
     width: 100%;
     border-spacing: 20px;
     margin-top: 20px;
     border-radius: 10px;
     border-style: hidden;
 }
-.sidetable th{
+
+.sidetable th {
     background-color: #00d1b2be;
     padding: 20px;
 }
-.sidetable td{
+
+.sidetable td {
     padding: 20px;
     background-color: #e6f5f3;
 }
-.sidetable td:nth-child(2){
+
+.sidetable td:nth-child(2) {
     text-align: right;
 }
 
-.formatbuttonscompare{
+.formatbuttonscompare {
     display: flex;
     width: 1273px;
     margin: 0 auto;
     justify-content: space-around;
 }
-.formatbuttonscompare>div{
+
+.formatbuttonscompare>div {
     width: 25%;
     text-align: center;
 }
 
-.formatbuttonscompare button{
+.formatbuttonscompare button {
     padding: 20px;
     border: none;
     font-size: 18px;
     width: 90%;
+}
+
+.sidetable p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
+    max-height: 1.2em;
+    white-space: nowrap;
+    transition: 0.15s;
+}
+
+.sidetable p:hover{
+    max-height: none !important;
+    white-space: pre-wrap;
+    transition: max-height 0.15s ease-out;
+}
+
+.mainPopup{
+    padding: 20px;
+    background-color: #EEEEEE;
+    transition: .5s;
+    max-width: 900px;
+    position: absolute;
+    margin: auto;
+    top: 120px;
+    right: 0;
+    left: 0;
+    border-radius: 10px;
+}
+
+.mainPopup i{
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
 }
